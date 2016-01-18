@@ -1,35 +1,18 @@
-var html = [
-    "<!DOCTYPE html>",
-    "<html>",
-    "<head lang=\"en\">",
-    "<meta charset=\"UTF-8\">",
-    "<title>index</title>",
-    "<script src=\"/yourScript.js\" defer></script>",
-    "</head>",
-    "<body>",
-    "<div id=\"outerDiv\">",
-    "<div",
-    "class=\"first\">",
-    "<div><div>hello</div></div>",
-    "</div>",
-    "<div>hi<div></div></div>",
-    "<div>I am a div</div>",
-    "</div>",
-    "</body>",
-    "</html>"
-];
+//Just open HTML file. This script can be atached to any html document to count divs//
+
+var html = document.documentElement.innerHTML;
 
 countDivs(html);
 
 function countDivs(html){
-    var htmlAsString = html.map(function(x){return x.trim()}).join('');
+    html = html.replace(/[\n\s+]/g, '');
     var regex = /<\/div>/g;
     var count = 0;
     var match;
 
-    while (match=regex.exec(htmlAsString)){
+    while (match=regex.exec(html)){
         count++;
     }
 
-    console.log(count);
+    alert('Number of divs: ' + count);
 }
