@@ -1,9 +1,9 @@
-var input = [
-'    mine mina - golD : 5',
-'mine mina: gold: 5'
-];
-
-solve(input);
+//var input = [
+//'    mine mina - golD : 5',
+//'mine mina: gold: 5'
+//];
+//
+//solve(input);
 
 function solve(arr){
     var result = {
@@ -12,10 +12,12 @@ function solve(arr){
         'diamonds':0
     };
 
+
+    var regex = /mine.+-\s*(gold|silver|diamonds)\s*:\s*(\d+)[ "]*/;
+    var match;
+
     for (var i = 0; i < arr.length; i++) {
 
-        var regex = /mine.+(silver|gold|diamonds)\s*:\s*(\d+)[ "]*/g;
-        var match;
 
         if (match = regex.exec(arr[i].trim())){
             var material = match[1];
